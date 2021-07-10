@@ -149,30 +149,19 @@
     <script>
         $(document).ready(function () {
 
-            var localTermFull = localStorage.hasOwnProperty("searchTerm5");
-            if (!localTermFull) {
-                for (var i = 5; i > 0; i--) {
-                    const SearchNo = "#searchTerm" + i.toString();
-                    const backwardNo = "#searchTerm" + (6 - i).toString();
+         
+            for (var i = 5; i > 0; i--) {
+                const SearchNo = "#searchTerm" + i.toString();
+                const backwardNo = "#searchTerm" + (6 - i).toString();
 
-                    if (localStorage.hasOwnProperty(SearchNo.substring(1))) {
+                if (localStorage.hasOwnProperty(SearchNo.substring(1))) {
 
-                        $(backwardNo).text(localStorage.getItem(SearchNo.substring(1)));
-                        $(backwardNo).attr("href", "/home/movies?param=" + localStorage.getItem(SearchNo.substring(1)));
+                    $(backwardNo).text(localStorage.getItem(SearchNo.substring(1)));
+                    $(backwardNo).attr("href", "/home/movies?param=" + localStorage.getItem(SearchNo.substring(1)));
 
-                    }
                 }
             }
-            else {
-                lastValue = JSON.parse(localStorage.getItem("Terms"));
-                for (var i = 5; i >= 0; i--) {
 
-                    const backwardNo = "#searchTerm" + (6 - i).toString();
-
-                    $(backwardNo).text(lastValue[i - 1]);
-                    $(backwardNo).attr("href", "/home/movies?param=" + lastValue[i - 1]);
-                }
-            }
         });
 
         $("#inputBtn").bind("click", function (event) {
@@ -183,7 +172,7 @@
 
             var counter = localStorage.counterValue || 1;
             var lastItemNo = 6;
-           /* var backwards = (lastItemNo - counter);*/
+            /* var backwards = (lastItemNo - counter);*/
 
 
             if (!localTerm5Full) {
@@ -253,7 +242,6 @@
 
                                 lastValue.push(localStorage.getItem("searchTerm6"));
                                 lastValue.shift();
-
                             }
                         }
                         a++;
@@ -269,9 +257,7 @@
                             b++;
                         }
                     }
-                    func1();
                 }
-
             }
 
             $(this).unbind(event);
