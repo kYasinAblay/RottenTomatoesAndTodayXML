@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "4yhr8szrV2OA2/Za2Nqn80z5+DtnP4sFKRP6mUBL8B/UOIOlF87cn7xlxCa4Opqhx+uJpN5G4I1hlnp7nQ5odw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Kamil\\source\\repos\\TodayXML\\RottenTomatoes.Movie\\RottenTomatoes.Movie.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kamil\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,91 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = "MovieDetail";
+}
+@section StyleSheet
+{
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/css/detail.css" rel="stylesheet" />
+}
+@if (Model != null)
+{
+    <div class="container">
+        <div class="cellphone-container">
+            <div class="movie d-block h-100">
+                <div class="menu"><i class="material-icons"></i></div>
+                <div class="movie-img" style="background-image:url(@Model.posters.original);background-size: contain;"></div>
+                <div class="text-movie-cont">
+                    <div class="mr-grid">
+                        <div class="col1">
+                            <h1>@Model.title</h1>
+                            <ul class="movie-gen">
+                                <li>@Model.runtime min /</li>
+                                <li>Adventure, Drama</li>
+                                <li>@Model.release_dates.theater</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mr-grid summary-row">
+                        <div class="col2">
+                            <h5>SUMMARY</h5>
+                        </div>
+                        <div class="col2">
+                            <ul class="movie-likes">
+                                <li><i class="material-icons">&#xE813;</i>124</li>
+                                <li><i class="material-icons">&#xE813;</i>3</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mr-grid">
+                        <div class="col1">
+                            <p class="movie-description">
+                                A group of elderly people are giving interviews about having lived in a climate of crop blight and constant dust reminiscent of The Great
+                                Depression of the 1930's. The first one seen is an elderly woman stating her father was a farmer, but did not start out that way.
+                            </p>
+                        </div>
+                    </div>
+                    @foreach (var item in Model.abridged_cast)
+                    {
+                        <div class="mr-grid actors-row">
+                            <div class="col1">
+                                <p class="movie-actors">@item.name</p>
+                            </div>
+                        </div>
+                    }
+                    <div class="mr-grid action-row">
+                        <div class="col2">
+                            <div class="watch-btn"><h3><i class="material-icons">&#xE037;</i>WATCH TRAILER</h3></div>
+                        </div>
+                        <div class="col6 action-btn">
+                            <i class="material-icons">&#xE161;</i>
+                        </div>
+                        <div class="col6 action-btn">
+                            <i class="material-icons">&#xE866;</i>
+                        </div>
+                        <div class="col6 action-btn">
+                            <i class="material-icons">&#xE80D;</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="cellphone-container">
+            <div class="movie">
+                No results to display.
+            </div>
+        </div>
+    </div>
+}
+
+<br />
+<br />
+@section Scripts{
+    <script>
+        $(".border-top.text-muted").hide();
+    </script>
+}

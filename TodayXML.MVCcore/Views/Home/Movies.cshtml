@@ -1,0 +1,290 @@
+﻿@model Rootobject
+@{
+    ViewData["Title"] = "Movie'S";
+}
+
+<div class="row col-12">
+    <div class="col-12 d-flex justify-content-between">
+        <div class="float-left">
+            <h1 style="margin: 0.33em 0;">@ViewData["Title"]</h1>
+            <p class="text-nowrap">@Model.total movies found according to the search word; @(ViewBag.Page). 50 records</p>
+        </div>
+        <div class="input-group custom-search-form float-right" style="justify-content: flex-end; margin: 2.33em 0; ">
+            <form asp-controller="Home" asp-action="Movies" method="post">
+                <div class="d-flex justify-content-between">
+
+                    <div id="myDropdown" class="dropdown-content">
+                        <div>
+                            <input name="param" type="text" class="form-control position-absolute" placeholder="Search..." id="myInput" onmouseover="filterFunction()" onmouseout="filterClose()" autocomplete="off">
+                            <span class="input-group-btn">
+                                <button id="inputBtn" class="btn btn-default" type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+
+                        <a id="searchTerm1" style="display:none"></a>
+                        <a id="searchTerm2" style="display:none"></a>
+                        <a id="searchTerm3" style="display:none"></a>
+                        <a id="searchTerm4" style="display:none"></a>
+                        <a id="searchTerm5" style="display:none"></a>
+
+
+                    </div>
+
+                    <input name="page" type="hidden" value="@ViewBag.Page" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="col-12 mt-3 text-center">
+        <div class="pagination" id="pagination">
+            <a id="page0" href="/home/movies?param=@ViewBag.Param&page=1">&laquo;</a>
+            <a id="page1" href="/home/movies?param=@ViewBag.Param&page=1">1</a>
+            <a id="page2" href="/home/movies?param=@ViewBag.Param&page=2">2</a>
+            <a id="page3" href="/home/movies?param=@ViewBag.Param&page=3">3</a>
+            <a id="page4" href="/home/movies?param=@ViewBag.Param&page=4">4</a>
+            <a id="page5" href="/home/movies?param=@ViewBag.Param&page=5">5</a>
+            <a id="page6" href="/home/movies?param=@ViewBag.Param&page=6">6</a>
+            <a id="page7" href="/home/movies?param=@ViewBag.Param&page=7">&raquo;</a>
+        </div>
+    </div>
+</div>
+
+
+
+@foreach (var movie in Model.movies)
+{
+    <!--movie-card-start-->
+    <div class="movie-card">
+        <div class="movie-header MovieImg" style="background:url('@movie.posters.original')">
+        </div><!--movie-header-->
+        <div class="movie-content">
+            <div class="movie-content-header">
+                <a href="/Home/MovieDetail?id=@movie.id&param=@ViewBag.Param&page=@ViewBag.Page">
+                    <h3 class="movie-title">@movie.title</h3>
+                </a>
+                <div class="imax-logo"></div>
+            </div>
+            <div class="movie-info">
+                <div class="info-section">
+                    <label>Releases Date & Time</label>
+                    <span>@movie.release_dates.theater</span>
+                </div><!--date,time-->
+                <div class="info-section">
+                    <label>Screen</label>
+                    <span>06</span>
+                </div><!--screen-->
+                <div class="info-section">
+                    <label>Seat</label>
+                    <span>05,06</span>
+                </div><!--seat-->
+            </div>
+        </div><!--movie-content-->
+    </div><!--movie-card-->
+}
+
+@section Scripts{
+    <script>
+        $(document).ready(function ()
+        {
+            var anchorId = "#page" + "@(ViewBag.Page)";
+            $(anchorId).addClass("active");
+        });
+    </script>
+
+    <script>
+
+
+        function filterFunction() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            div = document.getElementById("myDropdown");
+            a = div.getElementsByTagName("a");
+            for (i = 0; i < a.length; i++) {
+                if (a[i].text !== "") {
+                    a[i].style.display = "";
+                }
+            }
+        }
+
+        function filterClose() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            div = document.getElementById("myDropdown");
+            a = div.getElementsByTagName("a");
+            for (i = 0; i < a.length; i++) {
+                if (a[i].text === "") {
+                    /*alert(a[i].text !== null);*/
+                    a[i].style.display = "none";
+                }
+            }
+        }
+
+        var item = div = document.getElementById("myDropdown");
+        a = div.getElementsByTagName("a");
+        item.addEventListener("mouseover", func, false);
+        item.addEventListener("mouseout", func1, false);
+
+        function func() {
+            for (i = 0; i < a.length; i++) {
+                if (a[i].text !== "") {
+                    a[i].style.display = "";
+                }
+            }
+        }
+        function func1() {
+            for (i = 0; i < a.length; i++) {
+                if (a[i].text !== "") {
+                    a[i].style.display = "none";
+                }
+            }
+        }
+        func1();
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            var localTermFull = localStorage.hasOwnProperty("searchTerm5");
+            if (!localTermFull) {
+                for (var i = 5; i > 0; i--) {
+                    const SearchNo = "#searchTerm" + i.toString();
+                    const backwardNo = "#searchTerm" + (6 - i).toString();
+                   
+                    if (localStorage.hasOwnProperty(SearchNo.substring(1))) {
+
+                        $(backwardNo).text(localStorage.getItem(SearchNo.substring(1)));
+                        $(backwardNo).attr("href", "/home/movies?param=" + localStorage.getItem(SearchNo.substring(1)));
+                       
+                    }
+                }
+            }
+            else {
+                lastValue = JSON.parse(localStorage.getItem("Terms"));
+                for (var i = 5; i >= 0; i--) {
+
+                    const backwardNo = "#searchTerm" + (6 - i).toString();
+
+                    $(backwardNo).text(lastValue[i - 1]);
+                    $(backwardNo).attr("href", "/home/movies?param=" + lastValue[i - 1]);
+
+                }
+            }
+
+        });
+
+        $("#inputBtn").bind("click", function (event) {
+            event.preventDefault();
+
+            var localTerm5Full = localStorage.hasOwnProperty("searchTerm5");
+
+
+            var counter = localStorage.counterValue || 1;
+            var lastItemNo = 6;
+            var backwards = (lastItemNo - counter);
+
+
+            if (!localTerm5Full) {
+                lstorageItemName = "searchTerm" + counter.toString();
+            } else {
+                lstorageItemName = "searchTerm6";
+            }
+
+
+            if ($("#myInput").val()) {
+
+
+                localStorage.setItem(lstorageItemName, $("#myInput").val());
+
+                var href = "/home/movies?param=";
+
+
+                switch (parseInt(counter)) {
+                    case 1:
+                        if (localTerm5Full) {
+                            ScrollLocalStroge();
+                            $("#searchTerm1").text(localStorage.getItem("searchTerm1"));
+                            $("#searchTerm1").attr("href", href + localStorage.getItem("searchTerm1"));
+
+
+                        } else {
+                            $("#searchTerm5").text(localStorage.getItem("searchTerm1"));
+                            $("#searchTerm5").attr("href", href + localStorage.getItem("searchTerm1"));
+
+                            localStorage.counterValue = ++counter;
+                        }
+
+                        break;
+                    case 2:
+                        $("#searchTerm4").text(localStorage.getItem("searchTerm2"));
+                        $("#searchTerm4").attr("href", href + localStorage.getItem("searchTerm2"));
+
+                        localStorage.counterValue = ++counter;
+                        break;
+                    case 3:
+                        $("#searchTerm3").text(localStorage.getItem("searchTerm3"));
+                        $("#searchTerm3").attr("href", href + localStorage.getItem("searchTerm3"));
+
+                        localStorage.counterValue = ++counter;
+                        break;
+                    case 4:
+                        $("#searchTerm2").text(localStorage.getItem("searchTerm4"));
+                        $("#searchTerm2").attr("href", href + localStorage.getItem("searchTerm4"));
+
+                        localStorage.counterValue = ++counter;
+                        break;
+                    case 5:
+                        $("#searchTerm1").text(localStorage.getItem("searchTerm5"));
+                        $("#searchTerm1").attr("href", href + localStorage.getItem("searchTerm5"));
+
+                        localStorage.counterValue = 1;
+                        ScrollLocalStroge();
+                        break;
+                }
+
+                function ScrollLocalStroge() {
+                    alert("ScrollLocalStroge içerdeyim");
+                    let a = 1;
+                    var lastValue = [];
+
+                    while (a <= 6) {
+                      
+                        if (lastValue.length < 5) {
+                            lastValue.push(localStorage.getItem("searchTerm" + a.toString()));
+                        }
+                        else {
+                            if (localStorage.hasOwnProperty("searchTerm6")) {
+                                /*alert("6.item var");*/
+                                lastValue.push(localStorage.getItem("searchTerm6"));
+                                lastValue.shift();
+                            }
+
+                        }
+                        a++;
+                    }
+                    localStorage.setItem("Terms", JSON.stringify(lastValue));
+                    lastValue = JSON.parse(localStorage.getItem("Terms"));
+
+                    var b = 1;
+                    if (lastValue.length >= 5) {
+                       
+                        while (b <= 5) {
+                            localStorage.setItem("searchTerm" + (b).toString(), lastValue[b - 1]);
+                            b++;
+                        }
+                        console.log(lastValue);
+                    }
+                }
+
+            }
+
+            $(this).unbind(event);
+
+            setTimeout(function () { $("#inputBtn").click(); }, 500);
+        });
+    </script>
+}

@@ -1,0 +1,44 @@
+﻿
+@model TodayXML.Model.CurrencyModel[]
+@inject ICurrencyService currencyService
+@{
+    ViewData["Title"] = "Home page";
+
+}
+<br />
+<h1 class="mb-5">Other Currencies Against 1 Turkish Lira</h1>
+
+
+<table class="table table-hover table-responsive" style="font-size: 15px;" cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Unit</th>
+            <th>CurrencyCode</th>
+            <th>BankNoteBuying</th>
+            <th>BankNoteSelling</th>
+            <th>ForexBuying</th>
+            <th>ForexSelling</th>
+            <th>CrossRateUsd</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var unit in await currencyService.GetToday())
+        {
+            <tr>
+                <td>@unit.Name</td>
+                <td>@unit.Unit</td>
+                <td>@unit.CurrencyCode</td>
+                <td>@unit.BankNoteBuying</td>
+                <td>@unit.BankNoteSelling</td>
+                <td>@unit.ForexBuying</td>
+                <td>@unit.ForexSelling</td>
+                <td>@unit.CrossRateUsd</td>
+               
+            </tr>
+
+        }
+    </tbody>
+</table>
+

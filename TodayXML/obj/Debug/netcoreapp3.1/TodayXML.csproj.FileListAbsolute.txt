@@ -1,0 +1,9 @@
+C:\Users\Kamil\source\repos\TodayXML\TodayXML\bin\Debug\netcoreapp3.1\TodayXML.deps.json
+C:\Users\Kamil\source\repos\TodayXML\TodayXML\bin\Debug\netcoreapp3.1\TodayXML.dll
+C:\Users\Kamil\source\repos\TodayXML\TodayXML\bin\Debug\netcoreapp3.1\TodayXML.pdb
+C:\Users\Kamil\source\repos\TodayXML\TodayXML\obj\Debug\netcoreapp3.1\TodayXML.AssemblyInfoInputs.cache
+C:\Users\Kamil\source\repos\TodayXML\TodayXML\obj\Debug\netcoreapp3.1\TodayXML.AssemblyInfo.cs
+C:\Users\Kamil\source\repos\TodayXML\TodayXML\obj\Debug\netcoreapp3.1\TodayXML.csproj.CoreCompileInputs.cache
+C:\Users\Kamil\source\repos\TodayXML\TodayXML\obj\Debug\netcoreapp3.1\TodayXML.dll
+C:\Users\Kamil\source\repos\TodayXML\TodayXML\obj\Debug\netcoreapp3.1\TodayXML.pdb
+C:\Users\Kamil\source\repos\TodayXML\TodayXML\obj\Debug\netcoreapp3.1\TodayXML.csproj.AssemblyReference.cache

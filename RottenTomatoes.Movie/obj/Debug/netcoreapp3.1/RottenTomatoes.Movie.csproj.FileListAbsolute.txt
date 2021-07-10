@@ -1,0 +1,9 @@
+C:\Users\Kamil\source\repos\TodayXML\RottenTomatoes.Movie\bin\Debug\netcoreapp3.1\RottenTomatoes.Movie.deps.json
+C:\Users\Kamil\source\repos\TodayXML\RottenTomatoes.Movie\bin\Debug\netcoreapp3.1\RottenTomatoes.Movie.dll
+C:\Users\Kamil\source\repos\TodayXML\RottenTomatoes.Movie\bin\Debug\netcoreapp3.1\RottenTomatoes.Movie.pdb
+C:\Users\Kamil\source\repos\TodayXML\RottenTomatoes.Movie\obj\Debug\netcoreapp3.1\RottenTomatoes.Movie.csproj.AssemblyReference.cache
+C:\Users\Kamil\source\repos\TodayXML\RottenTomatoes.Movie\obj\Debug\netcoreapp3.1\RottenTomatoes.Movie.AssemblyInfoInputs.cache
+C:\Users\Kamil\source\repos\TodayXML\RottenTomatoes.Movie\obj\Debug\netcoreapp3.1\RottenTomatoes.Movie.AssemblyInfo.cs
+C:\Users\Kamil\source\repos\TodayXML\RottenTomatoes.Movie\obj\Debug\netcoreapp3.1\RottenTomatoes.Movie.csproj.CoreCompileInputs.cache
+C:\Users\Kamil\source\repos\TodayXML\RottenTomatoes.Movie\obj\Debug\netcoreapp3.1\RottenTomatoes.Movie.dll
+C:\Users\Kamil\source\repos\TodayXML\RottenTomatoes.Movie\obj\Debug\netcoreapp3.1\RottenTomatoes.Movie.pdb
