@@ -46,7 +46,7 @@ namespace TodayXML
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
                 data = client.DownloadString(url);
                 WriteToFile(data, path);
-                // Delete all files in a directory    
+                 
                 ClearInFolder(path);
 
 
