@@ -171,10 +171,8 @@
 
                     $(backwardNo).text(lastValue[i - 1]);
                     $(backwardNo).attr("href", "/home/movies?param=" + lastValue[i - 1]);
-
                 }
             }
-
         });
 
         $("#inputBtn").bind("click", function (event) {
@@ -185,7 +183,7 @@
 
             var counter = localStorage.counterValue || 1;
             var lastItemNo = 6;
-            var backwards = (lastItemNo - counter);
+           /* var backwards = (lastItemNo - counter);*/
 
 
             if (!localTerm5Full) {
@@ -194,22 +192,17 @@
                 lstorageItemName = "searchTerm6";
             }
 
-
             if ($("#myInput").val()) {
 
-
                 localStorage.setItem(lstorageItemName, $("#myInput").val());
-
                 var href = "/home/movies?param=";
-
 
                 switch (parseInt(counter)) {
                     case 1:
                         if (localTerm5Full) {
                             ScrollLocalStroge();
-                            $("#searchTerm1").text(localStorage.getItem("searchTerm1"));
-                            $("#searchTerm1").attr("href", href + localStorage.getItem("searchTerm1"));
-
+                            //$("#searchTerm1").text(localStorage.getItem("searchTerm1"));
+                            //$("#searchTerm1").attr("href", href + localStorage.getItem("searchTerm1"));
                         } else {
                             $("#searchTerm5").text(localStorage.getItem("searchTerm1"));
                             $("#searchTerm5").attr("href", href + localStorage.getItem("searchTerm1"));
@@ -260,6 +253,7 @@
 
                                 lastValue.push(localStorage.getItem("searchTerm6"));
                                 lastValue.shift();
+
                             }
                         }
                         a++;
@@ -274,7 +268,6 @@
                             localStorage.setItem("searchTerm" + (b).toString(), lastValue[b - 1]);
                             b++;
                         }
-
                     }
                     func1();
                 }
