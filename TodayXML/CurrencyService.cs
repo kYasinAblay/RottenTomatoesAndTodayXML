@@ -41,7 +41,7 @@ namespace TodayXML
 
             var ItsTime = DateTime.Now.Hour > 9;
 
-            if ((!File.Exists(path) && !Directory.Exists(path))&& ItsTime)
+            if ((!File.Exists(path) && !Directory.Exists(path)) && ItsTime)
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
                 data = client.DownloadString(url);
@@ -49,7 +49,7 @@ namespace TodayXML
                 // Delete all files in a directory    
                 ClearInFolder(path);
 
-               
+
             }
 
             data = ReadFromFile(@$"{path}");
@@ -64,19 +64,17 @@ namespace TodayXML
         {
             string folderPathbuild = "";
             string[] folderPath = path.Split(Path.DirectorySeparatorChar);
-            for (int i = 0; i < folderPath.Length-1; i++)
+            for (int i = 0; i < folderPath.Length - 1; i++)
             {
-                folderPathbuild += folderPath[i]+@"\";
+                folderPathbuild += folderPath[i] + @"\";
             }
             string[] files = Directory.GetFiles(folderPathbuild);
             foreach (string file in files)
             {
-                if (file!=path)
+                if (file != path)
                 {
                     File.Delete(file);
                 }
-               
-
             }
         }
 
